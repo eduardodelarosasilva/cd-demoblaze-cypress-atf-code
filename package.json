@@ -4,13 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "limpiar-reporte": "rimraf ./allure-report && rimraf ./allure-results",
+    "ejecutar-prueba": "npx cypress run --headed --env allure=true",
+    "generar-repote": "allure generate allure-results -o allure-report",
+    "abrir-reporte": "allure open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "cypress": "^15.8.1"
+    "cypress": "^15.8.1",
+    "rimraf": "^6.1.2"
+  },
+  "dependencies": {
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.36.0"
   }
 }
