@@ -4,18 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "limpiar-reporte": "rimraf ./allure-report && rimraf ./allure-results",
+    "limpiar-reporte": "npx rimraf ./allure-report ./allure-results",
     "ejecutar-prueba": "npx cypress run --headed --env allure=true",
-    "generar-repote": "allure generate allure-results -o allure-report",
-    "abrir-reporte": "allure open"
-  },
+    "generar-reporte": "allure generate ./allure-results -o ./allure-report --clean",
+    "abrir-reporte": "allure open ./allure-report",
+    "all-in-one": "npm run limpiar-reporte && npm run ejecutar-prueba && npm run generar-reporte"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "cypress": "^15.8.1",
-    "rimraf": "^6.1.2"
+    "cypress": "^15.8.1"
   },
   "dependencies": {
     "@shelex/cypress-allure-plugin": "^2.41.2",
