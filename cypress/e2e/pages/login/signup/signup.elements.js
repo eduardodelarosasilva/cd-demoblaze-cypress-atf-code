@@ -10,16 +10,23 @@ export class singUpElements {
 
         };
     }
-    static get button() {
-        return cy.contains('button', 'Sign up')
+    static get buttons() {
+        return {
+            get signUp() {
+                return cy.contains('button', 'Sign up')
+            },
+            get close() {
+                return cy.contains('button', 'Close').eq(1)
+            },
+        };
     }
 
     static get topMenu() {
         return {
             get signUp() {
                 return cy.get('a[data-target="#signInModal"]')
-            }
-        }
-    }
+            },
+        };
+    };
 }
 

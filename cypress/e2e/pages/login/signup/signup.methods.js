@@ -9,7 +9,7 @@ export class signUpMethods {
         singUpElements.textBoxes.password.invoke('val', password)
     }
     static clickOnsignUpButton() {
-        singUpElements.button.click();
+        singUpElements.buttons.signUp.click();
     }
 
     static signUp(username, password) {
