@@ -1,3 +1,4 @@
+import { topMenu } from "../common.elements/common.elements";
 import { loginElements } from "./login.elements";
 
 
@@ -12,7 +13,11 @@ export class loginMethods {
     static clickOnLoginButton() {
         loginElements.buttons.login.click();
     }
+    static clickOnMainLogin() {
+        topMenu.elements.loginIn.click();
+    }
     static login(username, password) {
+        this.clickOnMainLogin()
         this.insertUsername(username)
         this.insertPassword(password)
         this.clickOnLoginButton()

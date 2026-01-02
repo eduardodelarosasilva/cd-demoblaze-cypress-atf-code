@@ -8,7 +8,7 @@ export class singUpElements {
                 return cy.get('input#sign-password')
             },
 
-        };
+        }
     }
     static get buttons() {
         return {

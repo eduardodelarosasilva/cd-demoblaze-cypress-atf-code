@@ -17,4 +17,4 @@ export class homeElements {
         return cy.contains('a', productName)
 
     };
-}
+};

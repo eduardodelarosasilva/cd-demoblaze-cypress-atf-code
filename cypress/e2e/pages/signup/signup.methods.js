@@ -1,3 +1,4 @@
+import { topMenu } from "../common.elements/common.elements";
 import { singUpElements } from "./signup.elements";
 
 export class signUpMethods {
@@ -11,11 +12,15 @@ export class signUpMethods {
     static clickOnsignUpButton() {
         singUpElements.buttons.signUp.click();
     }
+    static clickOnMainSignup() {
+        topMenu.elements.signUp.click();
+    }
 
     static signUp(username, password) {
+        this.clickOnMainSignup()
         this.insertUsername(username)
         this.insertPassword(password)
-        this.clickOnsignUpButton()
+        this.clickOnsignUpButton();
     }
 
 }
