@@ -1,0 +1,21 @@
+import { singUpElements } from "./signup.elements";
+
+export class signUpMethods {
+
+    static insertUsername(username) {
+        singUpElements.textBoxes.username.invoke('val', username)
+    }
+    static insertPassword(password) {
+        singUpElements.textBoxes.password.invoke('val', password)
+    }
+    static clickOnsignUpButton() {
+        singUpElements.button.click();
+    }
+
+    static signUp(username, password) {
+        this.insertUsername(username)
+        this.insertPassword(password)
+        this.clickOnsignUpButton()
+    }
+
+}
