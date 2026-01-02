@@ -6,19 +6,21 @@
   "scripts": {
     "limpiar-reporte": "npx rimraf ./allure-report ./allure-results",
     "ejecutar-prueba": "npx cypress run --headed --env allure=true",
-    "generar-reporte": "allure generate ./allure-results -o ./allure-report --clean",
-    "abrir-reporte": "allure open ./allure-report",
-    "test": "npm run limpiar-reporte && npm run ejecutar-prueba || npm run generar-reporte && npm run abrir-reporte"
+    "ejecutar-prueba:headless": "npx cypress run --env allure=true",
+    "generar-reporte": "npx allure generate ./allure-results -o ./allure-report --clean",
+    "abrir-reporte": "npx allure open ./allure-report",
+    "test": "npm run limpiar-reporte && (npm run ejecutar-prueba:headless || cd .) && npm run generar-reporte && npm run abrir-reporte"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "allure-commandline": "^2.36.0",
     "cypress": "^15.8.1"
   },
   "dependencies": {
-    "@shelex/cypress-allure-plugin": "^2.41.2",
-    "allure-commandline": "^2.36.0"
+    "@shelex/cypress-allure-plugin": "^2.41.2"
   }
 }
