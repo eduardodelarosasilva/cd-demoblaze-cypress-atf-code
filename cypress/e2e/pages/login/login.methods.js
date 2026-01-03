@@ -1,3 +1,4 @@
+import { Logger } from "../../util/logger";
 import { topMenu } from "../common.elements/common.elements";
 import { loginElements } from "./login.elements";
 
@@ -17,9 +18,12 @@ export class loginMethods {
         topMenu.elements.loginIn.click();
     }
     static login(username, password) {
-        this.clickOnMainLogin()
+        Logger.subStep('insert username')
+        // this.clickOnMainLogin()
         this.insertUsername(username)
+        Logger.subStep('insert password')
         this.insertPassword(password)
+        Logger.subStep('click on login button')
         this.clickOnLoginButton()
     }
 };
