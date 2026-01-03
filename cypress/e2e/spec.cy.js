@@ -1,16 +1,15 @@
-const { homeData } = require("./pages/Home/home.data");
-const { homeMethods } = require("./pages/Home/home.methods");
-const { loginMethods } = require("./pages/login/login.methods");
-import data from "../fixtures/data.json"
-import { signUpMethods } from "./pages/signup/signup.methods";
+import { cartMethods } from "./pages/cart/cart.methods"
+import { loginMethods } from "./pages/login/login.methods"
+
+
+describe('pruebas', () => {
+  it('get rid of product', () => {
+
+    cy.visit('https://www.demoblaze.com/index.html');
+    cy.wait(11000);
+    cartMethods.clickOnDeleteLink('Nokia lumia 1520');
 
 
 
-describe('template spec', () => {
-  it('passes', () => {
-
-    cy.visit('https://demoblaze.com/')
-
-    homeMethods.clickOnProductLink(homeData.phone.Iphone632gb)
-  })
-})
+  });
+});

@@ -1,5 +1,5 @@
-export class topMenu {
-    static get elements() {
+export class commonElements {
+    static get topMenu() {
         return {
             get home() {
                 return cy.get('li.active a')

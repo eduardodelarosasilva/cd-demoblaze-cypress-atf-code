@@ -1,7 +1,9 @@
-import { topMenu } from "../common.elements/common.elements";
+import { commonElements } from "../common.elements/common.elements";
 import { homeElements } from "./home.elements";
 
+
 export class homeMethods {
+
     static clickOnPhonesOptions() {
         homeElements.categoriesMenu.phones.click();
     }
@@ -16,6 +18,6 @@ export class homeMethods {
 
     }
     static goHome() {
-        topMenu.elements.home.click();
+        commonElements.topMenu.home.click();
     }
 }
