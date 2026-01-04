@@ -1,4 +1,4 @@
-import { cartMethods } from "./pages/cart/cart.methods"
+import { cartMethods } from "./pages/cart/cart.methods"  //esto es ES6 moduoles, siguen la practica de tree shaking, donde solo se importa lo que se usa, 
 import { loginMethods } from "./pages/login/login.methods"
 import { Logger } from "./util/logger";
 
