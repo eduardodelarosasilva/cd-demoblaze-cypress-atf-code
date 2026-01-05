@@ -35,6 +35,20 @@ describe(commonPageData.testSuites.autenticacion, () => {
         commonPageMethods.verifySignedUser(storedUser);
     });
 
+    it('TC-004 Inicio de secion Invalida', () => {
 
+        Logger.step('Navegando a Demoblaze y haciendo click en Login')
+        loginMethods.navigateToDemoblazeAndOpenLogin();
+
+        Logger.subStep('completando los campos de Login con password invalido y username correcto')
+        loginMethods.insertUsername(storedUser)
+        loginMethods.insertPassword(wrongPassword)
+
+        Logger.subStep('Intentamos iniciar seción')
+        loginMethods.clickOnLoginButton();
+        Logger.verification('verificar que la alerta muestra un mensaje de error: Wrong password.')
+        loginMethods.verifyWrongPasswordMessage();
+
+    });
 
 });
