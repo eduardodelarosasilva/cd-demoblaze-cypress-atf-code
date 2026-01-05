@@ -4,7 +4,8 @@ export class commonPageData {
     }
     static get testSuites() {
         return {
-            regristroyAutenticacion: 'Registro y Autenticacion',
+            regristro: 'Registro',
+            autenticacion: 'Autenticacion',
             catalogoYCompras: 'catalogo y compras',
         }
     };
