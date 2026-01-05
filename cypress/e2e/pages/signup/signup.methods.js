@@ -1,4 +1,5 @@
-import { topMenu } from "../common.elements/common.elements";
+import { Logger } from "../../util/logger";
+import { commonPageMethods } from "../commonPage/common-page.methods";
 import { singUpElements } from "./signup.elements";
 
 export class signUpMethods {
@@ -6,21 +7,27 @@ export class signUpMethods {
     static insertUsername(username) {
         singUpElements.textBoxes.username.invoke('val', username)
     }
+
     static insertPassword(password) {
         singUpElements.textBoxes.password.invoke('val', password)
     }
+
     static clickOnsignUpButton() {
         singUpElements.buttons.signUp.click();
     }
-    static clickOnMainSignup() {
-        topMenu.elements.signUp.click();
-    }
+
 
     static signUp(username, password) {
-        this.clickOnMainSignup()
+        Logger.subStep('insert username')
         this.insertUsername(username)
+        Logger.subStep('insert password')
         this.insertPassword(password)
-        this.clickOnsignUpButton();
-    }
+        Logger.subStep('click on sign up button')
+        this.clickOnsignUpButton()
+    };
+
+    static verifySignUpSuccessfulMessageDisplay() {
+        commonPageMethods.verifyAlert('Sign up successful.');
+    };
 
 }
