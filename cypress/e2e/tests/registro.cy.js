@@ -2,11 +2,11 @@ import { commonPageData } from "../pages/commonPage/common-page.data";
 import { commonPageMethods } from "../pages/commonPage/common-page.methods";
 import { signUpMethods } from "../pages/signup/signup.methods";
 import { Logger } from "../util/logger";
-import data from "../../fixtures/data.json";
+import { loginData } from "../pages/login/login.data";
 
 
 describe(commonPageData.testSuites.regristro, () => {
-    const existuser = data.username;
+    const storedUser = loginData.validCredentials.username
     let user;
     let password;
 
@@ -20,7 +20,7 @@ describe(commonPageData.testSuites.regristro, () => {
         Logger.step('Navegando a Demoblaze y haciendo click en "Sign up');
         signUpMethods.navigateAndSignUpPrepare();
 
-        Logger.step('Intentando registrar usuario duplicado');
+        Logger.step('llenando los campos de registro con informacion valida');
         signUpMethods.insertUsername(user);
         signUpMethods.insertPassword(password);
 
@@ -36,7 +36,7 @@ describe(commonPageData.testSuites.regristro, () => {
         signUpMethods.navigateAndSignUpPrepare();
 
         Logger.step('Ingresando usuario ya existente');
-        signUpMethods.insertUsername(existuser);
+        signUpMethods.insertUsername(storedUser);
         signUpMethods.insertPassword(password);
 
         Logger.step('Intentando registrar');

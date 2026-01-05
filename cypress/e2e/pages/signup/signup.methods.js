@@ -22,10 +22,10 @@ export class signUpMethods {
         commonPageMethods.clickOnSignUpOptions()
     }
 
-    static navigateAndSignUpPrepare(username, password) {
+    static navigateAndSignUpPrepare() {
         commonPageMethods.navigateToDemoBlaze();
         cy.clearCookies();
         this.openSignUpOptions();
     }
 
-}
+};

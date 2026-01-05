@@ -1,6 +1,6 @@
 import { Logger } from "../../util/logger";
-import { topMenu } from "../common.elements/common.elements";
 import { loginElements } from "./login.elements";
+import { commonPageMethods } from "../commonPage/common-page.methods";
 
 
 export class loginMethods {
@@ -25,5 +25,14 @@ export class loginMethods {
         this.insertPassword(password)
         Logger.subStep('click on login button')
         this.clickOnLoginButton()
+    }
+    static navigateToDemoblazeAndOpenLogin() {
+        commonPageMethods.navigateToDemoBlaze();
+        cy.clearCookies();
+        commonPageMethods.clickOnLoginOptions();
+
+    }
+    static verifyWrongPasswordMessage() {
+        commonPageMethods.verifyAlert('Wrong password.');
     }
 };

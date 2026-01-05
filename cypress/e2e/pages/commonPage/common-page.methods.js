@@ -24,24 +24,25 @@ export class commonPageMethods {
     static clickOnCartOptions() {
         commonPageElements.topMenu.cart.click();
     }
+    static verifySignedUser(username) {
+        commonPageElements.signedUser.should('have.text', `Welcome ${username}`)
+
+    }
     static verifyAlert(expectedMessage) {
         cy.on('window:alert', (str) => {
             expect(str).to.equal(expectedMessage)
-        });
-    };
+        })
+
+    }
 
     static generateRandomString(length) {
-        // Definimos el set de caracteres permitidos (solo letras y números)
-        // Evitamos caracteres especiales que puedan dar problemas en URLs o alertas
         const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
         let result = '';
 
         for (let i = 0; i < length; i++) {
-            // Elegimos un índice al azar del set de caracteres
             const randomIndex = Math.floor(Math.random() * characters.length);
             result += characters.charAt(randomIndex);
         }
-
         return result;
     }
 }

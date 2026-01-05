@@ -1,4 +1,3 @@
-import { commonElements } from "../common.elements/common.elements";
 import { homeElements } from "./home.elements";
 
 
@@ -16,8 +15,5 @@ export class homeMethods {
     static clickOnProductLink(productName) {
         homeElements.product(productName).click();
 
-    }
-    static goHome() {
-        commonElements.topMenu.home.click();
     }
 }
