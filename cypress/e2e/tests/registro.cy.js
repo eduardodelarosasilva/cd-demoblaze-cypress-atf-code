@@ -4,25 +4,23 @@ import { signUpMethods } from "../pages/signup/signup.methods";
 import { Logger } from "../util/logger";
 import data from "../../fixtures/data.json";
 
-const user = commonPageMethods.generateRandomString(7);
-const password = commonPageMethods.generateRandomString(7);
-const existuser = data.username;
 
 describe(commonPageData.testSuites.regristro, () => {
+    const existuser = data.username;
+    let user;
+    let password;
 
     beforeEach(() => {
         Logger.reset();
+        user = commonPageMethods.generateRandomString(8);
+        password = commonPageMethods.generateRandomString(10);
     });
 
-    it('TC-001 - Registro de usuario Valido', () => {
-        Logger.step('Navegando a Demoblaze');
-        cy.clearCookies();
-        commonPageMethods.navigateToDemoBlaze();
+    it('TC-001 - Ingresando datos de registro válidos', () => {
+        Logger.step('Navegando a Demoblaze y haciendo click en "Sign up');
+        signUpMethods.navigateAndSignUpPrepare();
 
-        Logger.step('Haciendo click en "Sign up"');
-        commonPageMethods.clickOnSignUpOptions();
-
-        Logger.step('Completando campos con información válida');
+        Logger.step('Intentando registrar usuario duplicado');
         signUpMethods.insertUsername(user);
         signUpMethods.insertPassword(password);
 
@@ -34,12 +32,8 @@ describe(commonPageData.testSuites.regristro, () => {
     });
 
     it('TC-002 - Registro de usuario inválido', () => {
-        Logger.step('Navegando a Demoblaze');
-        cy.clearCookies();
-        commonPageMethods.navigateToDemoBlaze();
-
-        Logger.step('Haciendo click en "Sign up"');
-        commonPageMethods.clickOnSignUpOptions();
+        Logger.step('Navegando a Demoblaze y haciendo click en "Sign up');
+        signUpMethods.navigateAndSignUpPrepare();
 
         Logger.step('Ingresando usuario ya existente');
         signUpMethods.insertUsername(existuser);

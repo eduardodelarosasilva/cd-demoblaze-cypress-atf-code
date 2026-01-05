@@ -18,11 +18,14 @@ export class signUpMethods {
     static verifuThatThisUserAlreadyExistMessageDisplay() {
         commonPageMethods.verifyAlert('This user already exist.');
     }
+    static openSignUpOptions() {
+        commonPageMethods.clickOnSignUpOptions()
+    }
 
-    static signUp(username, password) {
-        this.insertUsername(username)
-        this.insertPassword(password)
-        this.clickOnsignUpButton()
+    static navigateAndSignUpPrepare(username, password) {
+        commonPageMethods.navigateToDemoBlaze();
+        cy.clearCookies();
+        this.openSignUpOptions();
     }
 
 }

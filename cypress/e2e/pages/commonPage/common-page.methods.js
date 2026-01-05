@@ -27,20 +27,21 @@ export class commonPageMethods {
     static verifyAlert(expectedMessage) {
         cy.on('window:alert', (str) => {
             expect(str).to.equal(expectedMessage)
-
         });
     };
 
-    static generateRandomString(length = 10) {
+    static generateRandomString(length) {
+        // Definimos el set de caracteres permitidos (solo letras y números)
+        // Evitamos caracteres especiales que puedan dar problemas en URLs o alertas
+        const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
 
-        var result = '';
-        var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        let counter = 0;
-        while (counter < length) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            counter += 1
+        for (let i = 0; i < length; i++) {
+            // Elegimos un índice al azar del set de caracteres
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            result += characters.charAt(randomIndex);
         }
+
         return result;
     }
 }
