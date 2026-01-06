@@ -3,10 +3,13 @@ import { Logger } from "../util/logger";
 import { loginData } from "../pages/login/login.data";
 import { commonPageMethods } from "../pages/commonPage/common-page.methods";
 import { homeMethods } from "../pages/Home/home.methods";
+import { productsDetailsMethods } from "../pages/product-details/products-detaills.methods";
+import { cartMethods } from "../pages/cart/cart.methods";
 
 describe(commonPageData.testSuites.catalogoYCompras, () => {
     let username = loginData.validCredentials.username;
     let password = loginData.validCredentials.password;
+    let product = 'MacBook Pro';
 
     before(() => {
     });
@@ -47,5 +50,32 @@ describe(commonPageData.testSuites.catalogoYCompras, () => {
         homeMethods.verifyProductDisplay('Sony xperia z5')
         homeMethods.verifyProductDisplay('HTC One M9')
     });
+
+    it('TC07 Agregar producto al carrito', () => {
+
+        Logger.step('Navegar a la página de inicio')
+        commonPageMethods.clickOnHomeOption()
+
+        Logger.step('Seleccionar una categoría de productos en el menú de navegación')
+        homeMethods.clickOnLaptopsOptions()
+
+        Logger.step('Hacer clic en un producto específico')
+        homeMethods.clickOnProductLink(product)
+
+        Logger.verification('Verificar que se muestra add to cart en la página de detalles del producto')
+        productsDetailsMethods.verifyProductDetails()
+
+        Logger.subStep('Hacer clic en el botón "Add to cart".')
+        productsDetailsMethods.clickOnAddToCartButton()
+
+        Logger.verification('Verificar que se muestra un mensaje de confirmación y el producto se agrega alcarrito.')
+        productsDetailsMethods.verifyProductAddedMessage();
+        Logger.subStep('navegando a cart ')
+        commonPageMethods.clickOnCartOptions()
+        Logger.verification('El producto se encuentra en el carrito')
+        cartMethods.verifyProductAdded(product)
+
+    });
+
 
 });
