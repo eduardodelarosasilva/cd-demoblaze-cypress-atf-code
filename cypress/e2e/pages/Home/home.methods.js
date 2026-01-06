@@ -6,7 +6,7 @@ export class homeMethods {
     static clickOnPhonesOptions() {
         homeElements.categoriesMenu.phones.click();
     }
-    static cickOnLaptopsOptions() {
+    static clickOnLaptopsOptions() {
         homeElements.categoriesMenu.laptops.click();
     }
     static clickOnMonitorsOptions() {
@@ -15,5 +15,8 @@ export class homeMethods {
     static clickOnProductLink(productName) {
         homeElements.product(productName).click();
 
+    }
+    static verifyProductDisplay(productName) {
+        homeElements.product(productName).should('be.visible');
     }
 }

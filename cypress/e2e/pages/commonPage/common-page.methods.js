@@ -1,3 +1,4 @@
+import { loginMethods } from "../login/login.methods";
 import { commonPageData } from "./common-page.data";
 import { commonPageElements } from "./common-page.elements";
 
@@ -26,7 +27,12 @@ export class commonPageMethods {
     }
     static verifySignedUser(username) {
         commonPageElements.signedUser.should('have.text', `Welcome ${username}`)
-
+    }
+    static LoginAndNavigateDemoblaseze(username, password) {
+        commonPageMethods.navigateToDemoBlaze();
+        cy.clearCookies();
+        commonPageMethods.clickOnLoginOptions();
+        loginMethods.login(username, password);
     }
     static verifyAlert(expectedMessage) {
         cy.on('window:alert', (str) => {
