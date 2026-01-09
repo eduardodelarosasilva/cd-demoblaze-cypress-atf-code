@@ -19,4 +19,7 @@ export class homeMethods {
     static verifyProductDisplay(productName) {
         homeElements.product(productName).should('be.visible');
     }
+    static verifyHomePageIsShown() {
+        cy.url().should('eq', 'https://www.demoblaze.com/index.html');
+    }
 }

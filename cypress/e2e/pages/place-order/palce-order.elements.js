@@ -5,7 +5,7 @@ export class placeOrderElements {
                 return cy.get('input#name')
             },
             get country() {
-                cy.get('input#country')
+                return cy.get('input#country')
             },
             get city() {
                 return cy.get('input#city')

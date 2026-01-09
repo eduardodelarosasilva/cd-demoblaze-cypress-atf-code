@@ -6,7 +6,7 @@ export class placeOrderData {
             city: 'canada',
             month: '10',
             year: '2025',
-            creditCard: '0087454737365055',
+            creditCard: '4532015478129034'
         }
     }
 }

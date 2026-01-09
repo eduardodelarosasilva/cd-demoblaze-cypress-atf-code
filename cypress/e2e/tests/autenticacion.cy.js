@@ -17,6 +17,7 @@ describe(commonPageData.testSuites.autenticacion, () => {
 
     beforeEach(() => {
         Logger.reset();
+        commonPageMethods.logout();
     });
 
 

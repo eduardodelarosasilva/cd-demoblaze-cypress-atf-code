@@ -51,4 +51,11 @@ export class commonPageMethods {
         }
         return result;
     }
+    static logout() {
+        cy.get('body').then($body => {
+            if ($body.find('#logout2').length > 0) {
+                commonPageElements.topMenu.logout.click();
+            }
+        })
+    }
 }

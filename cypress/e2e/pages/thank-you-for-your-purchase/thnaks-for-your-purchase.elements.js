@@ -2,14 +2,14 @@ export class thanyouForYourPurchaseElements {
     static get buttons() {
         return {
             get ok() {
-                return cy.contains('button', 'OK')
+                return cy.get('button[class="confirm btn btn-lg btn-primary"]');
             },
         }
     }
     static get icons() {
         return {
             get greenCheckMark() {
-                return cy.get('.sa-success')
+                return cy.contains('Thank you for your purchase!');
             },
         }
     }

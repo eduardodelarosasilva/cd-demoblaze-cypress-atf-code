@@ -5,6 +5,9 @@ import { commonPageMethods } from "../pages/commonPage/common-page.methods";
 import { homeMethods } from "../pages/Home/home.methods";
 import { productsDetailsMethods } from "../pages/product-details/products-detaills.methods";
 import { cartMethods } from "../pages/cart/cart.methods";
+import { placeOrderData } from "../pages/place-order/place-order.data";
+import { placeOrderMethods } from "../pages/place-order/place-order.methods";
+import { thankyouForYourPurchaseMethods } from "../pages/thank-you-for-your-purchase/thanks-for-your-purchase.methods";
 
 describe(commonPageData.testSuites.catalogoYCompras, () => {
     let username = loginData.validCredentials.username;
@@ -76,6 +79,56 @@ describe(commonPageData.testSuites.catalogoYCompras, () => {
         cartMethods.verifyProductAdded(product)
 
     });
+
+    it('TC08- Realizar una compra', () => {
+
+        Logger.step('Navegar a la página de inicio')
+        commonPageMethods.clickOnHomeOption()
+
+        Logger.step('Seleccionar una categoría de productos en el menú de navegación')
+        homeMethods.clickOnLaptopsOptions()
+
+        Logger.step('Hacer clic en un producto específico')
+        homeMethods.clickOnProductLink(product)
+
+        Logger.verification('Verificar que se muestra add to cart en la página de detalles del producto')
+        productsDetailsMethods.verifyProductDetails()
+
+        Logger.subStep('Hacer clic en el botón "Add to cart".')
+        productsDetailsMethods.clickOnAddToCartButton()
+
+        Logger.verification('Verificar que se muestra un mensaje de confirmación y el producto se agrega alcarrito.')
+        productsDetailsMethods.verifyProductAddedMessage();
+        Logger.step('navegando a cart ')
+        commonPageMethods.clickOnCartOptions()
+        Logger.verification('El producto se encuentra en el carrito')
+        cartMethods.verifyProductAdded(product)
+
+        Logger.step('Hacer clic en la opcion "Cart" en la barra de navegación')
+        commonPageMethods.clickOnCartOptions()
+
+        Logger.verification('Verificar que se muestra la página del carrito de compras.')
+        cartMethods.verifyCartPageIsShown();
+
+        Logger.step('Hacer clic en el botón "Place Order"')
+        cartMethods.clickOnPlaceOrderButton();
+
+        Logger.step('Completar los campos obligatorios en la página de información de envío.')
+        placeOrderMethods.setupPurchaseIntercept(); // intercepatos antes de llenar el formualrio
+        placeOrderMethods.insertOrderInformation(placeOrderData.testData);
+        placeOrderMethods.clickOnPurchaseButton();
+        placeOrderMethods.waitForPurchaseResponse();
+
+
+        thankyouForYourPurchaseMethods.clickOnOK();
+
+        homeMethods.verifyHomePageIsShown();
+
+
+
+
+    });
+
 
 
 });

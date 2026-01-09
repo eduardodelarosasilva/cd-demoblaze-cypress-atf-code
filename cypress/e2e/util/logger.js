@@ -22,6 +22,9 @@ export class Logger {
     static reset() {
         this.currentStep = 0;
     }
+    static preCondition(description) {
+        this.#send(`POSTCONDITION`, description)
+    }
 }
 // export class Logger {
 //     static stepNumber(number) {
